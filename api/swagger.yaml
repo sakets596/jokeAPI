@@ -1,0 +1,82 @@
+swagger: "2.0"
+info:
+  description: "This is Saket's fun APIs documentation"
+  version: "1.0.0"
+  title: "Saket's fun APIs"
+  contact:
+    email: "saketworks247@gmail.com"
+basePath: "/api"
+tags:
+- name: "joke"
+  description: "Joke APIs"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "http"
+paths:
+  /alljoke:
+    get:
+      tags:
+      - "joke"
+      summary: "Pull complete list of all Jokes"
+      description: ""
+      operationId: "api.response.alljoke"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successfully fetch all jokes"
+  /joke/{joke_id}:
+    get:
+      tags:
+      - "joke"
+      summary: "Fetch joke with joke id"
+      description: ""
+      operationId: "api.response.joke"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "joke_id"
+        in: "path"
+        description: "Joke id"
+        required: true
+        type: "number"
+      responses:
+        200:
+          description: "Successfully fetched joke"
+  /randomjoke:
+    get:
+      tags:
+      - "joke"
+      summary: "Fetch random joke"
+      description: ""
+      operationId: "api.response.randomjoke"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Successfully fetched a random joke"
+  /postjoke:
+    post:
+      tags:
+        - joke
+      operationId: api.response.post_joke
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: joke
+          type: string
+      responses:
+        201:
+          description: "Successfully posted the joke"
